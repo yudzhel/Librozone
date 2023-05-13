@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 using Librozone.Data.Enums;
+using Microsoft.EntityFrameworkCore;
 
 namespace Librozone.Models
 {

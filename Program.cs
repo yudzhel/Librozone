@@ -1,10 +1,15 @@
 using Librozone.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<AppDbContext>();
+
+// Register DbContext
+var connectionString = builder.Configuration.GetConnectionString("AppDbConnection");
+builder.Services.AddDbContext<AppDbContext>(options => 
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
@@ -26,5 +31,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Seed Database
+AppDbInitializer.Seed(app);
 
 app.Run();
