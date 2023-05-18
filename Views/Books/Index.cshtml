@@ -4,10 +4,67 @@
 	ViewData["Title"] = "List of Books";
 }
 
+<style>
+    .book-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: fit-content;
+        display: inline-block;
+        margin: 10px;
+    }
+
+        .book-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-card h2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .book-card p {
+            margin: 0;
+        }
+
+        .book-card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+</style>
 <div class="row">
 	@foreach (var item in Model)
 	{
+		<div class="col-md-2 col-xs-3 border-primary mb-3">
+			<div class="card mb-3">
+				<div class="row g-0">
+					<div class="col-md-3">
+						
+							<img src="book_cover.jpg" alt="Book Cover">
+							<h2>Title</h2>
+							<p>Author</p>
+							<p>Price: $19.99</p>
+							<button>Purchase</button>
+					
+
+					</div>
+
+				</div>
+
+			</div>
 		
+		</div>
 	}
 </div>
-
