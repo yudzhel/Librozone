@@ -15,7 +15,7 @@ namespace Librozone.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allBooks = await _context.Books.ToListAsync();
+            var allBooks = await _context.Books.Include(n => n.Author).ToListAsync();
             return View(allBooks);
         }
     }
