@@ -1,5 +1,6 @@
 ﻿using Librozone.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Librozone.Data.Services
 {
@@ -10,9 +11,10 @@ namespace Librozone.Data.Services
         {
             _context = context;
         }
-        public void Add(Author author)
+        public async Task AddAsync(Author author)
         {
-            throw new NotImplementedException();
+            await _context.Authors.AddAsync(author);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -20,15 +22,16 @@ namespace Librozone.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Author>> GetAll()
+        public async Task<IEnumerable<Author>> GetAllAsync()
         {
             var result = await _context.Authors.ToListAsync();
             return result;
         }
 
-        public Author GetById(int id)
+        public async Task<Author> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Authors.FirstOrDefaultAsync(n =>  n.Id == id);
+            return result;
         }
 
         public Author Update(int id, Author newAuthor)
