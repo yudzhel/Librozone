@@ -1,4 +1,5 @@
 ﻿using Librozone.Data;
+using Librozone.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,15 +7,15 @@ namespace Librozone.Controllers
 {
     public class AuthorsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAuthorsService _service;
 
-        public AuthorsController(AppDbContext context)
+        public AuthorsController(IAuthorsService service)
         {
-            _context = context;
+            _service = service;
         }
         public async Task<IActionResult> Index()
         {
-            var allAuthors = await _context.Authors.ToListAsync();
+            var allAuthors = await _service.GetAll();
             return View(allAuthors);
         }
     }

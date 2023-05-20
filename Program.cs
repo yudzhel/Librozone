@@ -1,7 +1,11 @@
 using Librozone.Data;
+using Librozone.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Services configuration
+builder.Services.AddScoped<IAuthorsService, AuthorsService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -12,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
