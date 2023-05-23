@@ -63,17 +63,44 @@
             margin-top: 10px;
             cursor: pointer;
         }
+
+        .img-container {
+            height: 250px;
+            width: auto;
+
+        }
+
+        .img-container img {
+            height: 100%;
+            width: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+
+        .book-title {
+            height: 32px;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
 </style>
 <div class="row align-items-start">
 	@foreach (var item in Model)
 	{
 		<div class="col-md-3 col-xs-12 col-lg-2 col-sm-4">
 						<div class="book-card">
-                            <img src="@item.CoverURL" alt="@item.Title">
-							<h2>@item.Title</h2>
-							<p>@item.Author.FullName</p>
-							<p>Price: @item.Price.ToString("c")</p>
-                            <button><i class="bi bi-cart"></i> Add</button>
+                            <div class="img-container">
+                                <img src="@item.CoverURL" alt="@item.Title">
+                            </div>
+                            <div class="book-info">
+                                <div class="book-title">
+							        <h2>@item.Title</h2>
+                                </div>
+							    <p>@item.Author.FullName</p>
+							    <p>Price: @item.Price.ToString("c")</p>
+                                <button><i class="bi bi-cart"></i> Add</button>
+                            </div>
 						</div>
 
 		</div>

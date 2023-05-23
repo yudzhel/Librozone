@@ -44,10 +44,29 @@ namespace Librozone.Controllers
         {
             var authorDetails = await _service.GetByIdAsync(id);
 
-            if (authorDetails == null) return View("Empty");
+            if (authorDetails == null) return View("NotFound");
             return View(authorDetails);
         }
 
+        //GET: Authors/Create
+        public async Task<IActionResult> Edit(int id)
+        {
+            var authorDetails = await _service.GetByIdAsync(id);
+            if (authorDetails == null) return View("NotFound");
+            return View(authorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, FullName, ProfilePictureURL,Bio")] Author author)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(author);
+            }
+
+            await _service.UpdateAsync(id, author);
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 

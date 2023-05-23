@@ -34,9 +34,11 @@ namespace Librozone.Data.Services
             return result;
         }
 
-        public Author Update(int id, Author newAuthor)
+        public async Task<Author> UpdateAsync(int id, Author newAuthor)
         {
-            throw new NotImplementedException();
+            _context.Update(newAuthor);
+            await _context.SaveChangesAsync();
+            return newAuthor;
         }
     }
 }

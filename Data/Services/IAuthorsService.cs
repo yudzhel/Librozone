@@ -7,7 +7,7 @@ namespace Librozone.Data.Services
         Task<IEnumerable<Author>> GetAllAsync();
         Task<Author> GetByIdAsync(int id);
         Task AddAsync(Author author);
-        Author Update(int id, Author newAuthor);
+        Task <Author> UpdateAsync(int id, Author newAuthor);
         void Delete(int id);
     }
 }
