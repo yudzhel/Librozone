@@ -1,13 +1,10 @@
-﻿using Librozone.Models;
+﻿using Librozone.Data.Base;
+using Librozone.Models;
 
 namespace Librozone.Data.Services
 {
-    public interface IAuthorsService
+    public interface IAuthorsService:IEntityBaseRepository<Author>
     {
-        Task<IEnumerable<Author>> GetAllAsync();
-        Task<Author> GetByIdAsync(int id);
-        Task AddAsync(Author author);
-        Task <Author> UpdateAsync(int id, Author newAuthor);
-        void Delete(int id);
+      
     }
 }

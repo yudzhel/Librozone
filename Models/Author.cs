@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Librozone.Data.Base;
+using System.ComponentModel.DataAnnotations;
 
 namespace Librozone.Models
 {
-    public class Author
+    public class Author:IEntityBase
     {
         [Key]
         public int Id { get; set; }
